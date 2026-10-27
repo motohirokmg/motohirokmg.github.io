@@ -1,0 +1,237 @@
+/* Shared styles for motohirokumagai.com. Plain CSS, no build step. */
+
+:root {
+  color-scheme: light;
+  --color-text: #1f2328;
+  --color-muted: #57606a;
+  --color-link: #1a5a96;
+  --color-link-hover: #0f3d68;
+  --color-border: #e1e4e8;
+  --content-width: 48rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  overflow-wrap: break-word;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--color-link);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* Hidden above the page until reached with the keyboard. */
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  background-color: #ffffff;
+  border: 2px solid var(--color-link);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* Header and navigation */
+
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 2rem;
+  padding-block: 0.5rem;
+}
+
+.site-name {
+  display: inline-block;
+  padding-block: 0.5rem;
+  color: var(--color-text);
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding-block: 0.5rem;
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.4em;
+}
+
+/* Page content */
+
+main {
+  padding-block: 2.5rem 4rem;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h1 {
+  margin-bottom: 1.25rem;
+  font-size: 1.875rem;
+}
+
+h2 {
+  margin-top: 2.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 1.3rem;
+}
+
+p {
+  margin: 0 0 0.75rem;
+}
+
+/* Home */
+
+.profile {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.profile-photo {
+  width: 10rem;
+  border-radius: 4px;
+}
+
+.contact {
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 40rem) {
+  .profile {
+    grid-template-columns: 12.5rem minmax(0, 1fr);
+    column-gap: 2.75rem;
+    align-items: start;
+  }
+
+  .profile-photo {
+    width: 100%;
+  }
+}
+
+/* Research */
+
+.paper-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.paper-list > li {
+  margin-bottom: 1.5rem;
+}
+
+.paper-list p {
+  margin: 0;
+}
+
+.paper-title {
+  font-weight: 600;
+}
+
+/* Underline only the title text, not the space before the label. */
+.paper-title a {
+  text-decoration: none;
+}
+
+.paper-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.paper-title a:hover .paper-link {
+  text-decoration-thickness: 2px;
+}
+
+.paper-detail {
+  color: var(--color-muted);
+}
+
+/* Small "PDF" / "DOI" label inside a link; inline-block keeps it out of the underline. */
+.link-type {
+  display: inline-block;
+  margin-left: 0.15em;
+  padding: 0 0.35em;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  vertical-align: 0.15em;
+}
